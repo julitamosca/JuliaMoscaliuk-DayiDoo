@@ -9,6 +9,7 @@ const carritoDeCompras = []
 
 
 // PRODUCTOS
+
 class Producto {
     constructor(id, nombre, precio, img, desc = ' ') {
         this.id = id
