@@ -1,4 +1,5 @@
 //VARIABLES
+
 let totalCompra = 0
 let agregarAlCarrito = parseInt(prompt('Ingresa el produco que deseas comprar: \n1-Camiseta \n2-Gorro \n3-Taza \n4-Llavero'))
 let seguirComprando = true
@@ -49,6 +50,7 @@ while (seguirComprando === true) {
     }
 
 //FACTURACIÓN
+
 alert('El total de su compra es: $' + totalCompra + ' Pero te espera un increible descuento.')
 
 function precioFinal(monto) {
