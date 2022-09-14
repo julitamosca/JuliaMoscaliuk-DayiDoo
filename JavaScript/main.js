@@ -9,7 +9,7 @@ const carritoDeCompras = []
 
 
 // PRODUCTOS
-class productoLocal {
+class Producto {
     constructor(id, nombre, precio, img, desc = ' ') {
         this.id = id
         this.nombre = nombre
@@ -17,17 +17,38 @@ class productoLocal {
         this.img = img
         this.desc = desc
     }
+    desplegarProductos() {
+        const card = `
+            <div class="card">
+                <p>${this.nombre}</p>
+                <div>
+                    <img class="imgProducto" src=${this.img} alt="foto del producto">
+                </div>
+                <div>
+                    <p>${this.precio}</p>
+                </div>
+                <div class="btn-container">
+                    <button id="001" class="btnAgregar">Agregar al carrito</button>
+                </div>
+            </div>
+        `
+        const container = document.getElementById('container')
+        container.innerHTML += card
+    }
 }
 
-let camiseta1 = new productoLocal('01', 'Camiseta estampada', 700, './assets/camiseta01.jpg')
-let gorro1 = new productoLocal('02', 'Gorro con onda', 300, './assets/gorro02.jpg')
-let taza1 = new productoLocal('03', 'Taza a rayas', 200, './assets/taza03.jpg')
-let llavero1 = new productoLocal('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
+let camiseta1 = new Producto('01', 'Camiseta estampada', 700, './assets/camiseta01.jpg')
+let gorro1 = new Producto('02', 'Gorro con onda', 300, './assets/gorro02.jpg')
+let taza1 = new Producto('03', 'Taza a rayas', 200, './assets/taza03.jpg')
+let llavero1 = new Producto('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
 
 
-productoLocal.push(camiseta1, gorro1, taza1, llavero1)
+productos.push(camiseta1, gorro1, taza1, llavero1)
 
-console.log(productoLocal)
+console.log(productos)
+productos.forEach(e => {
+e.desplegarProductos()
+})
 
 //ORDEN DE COMPRA 
 
