@@ -4,34 +4,42 @@ let totalCompra = 0
 let agregarAlCarrito = parseInt(prompt('Ingresa el produco que deseas comprar: \n1-Camiseta \n2-Gorro \n3-Taza \n4-Llavero'))
 let seguirComprando = true
 
+const productos = []
+const carritoDeCompras = []
+
 
 // PRODUCTOS
-
-function productosLocales (nombre, precio) {
-    this.nombre = nombre
-    this.precio = precio
+class productoLocal {
+    constructor(id, nombre, precio, img, desc = ' ') {
+        this.id = id
+        this.nombre = nombre
+        this.precio = precio
+        this.img = img
+        this.desc = desc
+    }
 }
 
+let camiseta1 = new productoLocal('01', 'Camiseta estampada', 700, './assets/camiseta01.jpg')
+let gorro1 = new productoLocal('02', 'Gorro con onda', 300, './assets/gorro02.jpg')
+let taza1 = new productoLocal('03', 'Taza a rayas', 200, './assets/taza03.jpg')
+let llavero1 = new productoLocal('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
 
-let camiseta = new productosLocales('Camiseta', 700)
-let gorro = new productosLocales('Gorro', 300)
-let taza = new productosLocales('Taza', 200)
-let llavero = new productosLocales('Llavero', 100)
 
+productoLocal.push(camiseta1, gorro1, taza1, llavero1)
 
-console.log(productosLocales)
+console.log(productoLocal)
 
 //ORDEN DE COMPRA 
 
 while (seguirComprando === true) {
     if (agregarAlCarrito === 1) {
-        totalCompra = totalCompra + camiseta.precio
+        totalCompra = totalCompra + camiseta1.precio
     } else if (agregarAlCarrito === 2) {
-        totalCompra = totalCompra + gorro.precio
+        totalCompra = totalCompra + gorro1.precio
     } else if (agregarAlCarrito === 3) {
-        totalCompra = totalCompra + taza.precio
+        totalCompra = totalCompra + taza1.precio
     } else if (agregarAlCarrito === 4) {
-        totalCompra = totalCompra + llavero.precio
+        totalCompra = totalCompra + llavero1.precio
     } else {
         agregarAlCarrito = parseInt(prompt('Opción incorrecta, vuelve a intentarlo: \n1-Camiseta \n2-Gorro \n3-Taza \n4-Llavero'))
         continue
@@ -47,7 +55,7 @@ while (seguirComprando === true) {
         agregarAlCarrito = parseInt(prompt('Opción incorrecta, vuelve a intentarlo: \n¿Quisieras agregar otro producto? 1.si - 2.no'))
         continue
     }
-    }
+}
 
 //FACTURACIÓN
 
