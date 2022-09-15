@@ -24,14 +24,14 @@ class producto {
                     <p>${this.precio}</p>
                 </div>
                 <div class="btn-container">
-                    <button id="001" class="btnAgregar">Agregar al carrito</button>
+                    <button id=${this.id} class="btnAgregar">Agregar al carrito</button>
                 </div>
             </div>
         `
         const container = document.getElementById('container')
         container.innerHTML += card
     }
-    agregarEvento() {
+    agregarEvento(){
         const btnAgregar = document.getElementById(this.id)
         const productoEncontrado = productos.find(product => product.id == this.id)
         btnAgregar.addEventListener('click', () => agregarAlCarrito(productoEncontrado))
@@ -60,14 +60,19 @@ productos.forEach(e => {
 function agregarAlCarrito(producto){
     console.log(producto)
 
-    const enCarrito = carrito.find(prod => prod.id == producto.id)
+    let enCarrito = carrito.find(prod => prod.id == producto.id)
     
 
-    if(! enCarrito){
+    if(!enCarrito){
         carrito.push({...producto, cantidad: 1})
     } else {
         console.log(carrito)
         let carritoFiltrado = carrito.filter(prod => prod.id != producto.id)
+        carrito = [
+            ...carritoFiltrado,
+        {...enCarrito, cantidad: enCarrito.cantidad + 1}
+        ]
+        
         console.log(carritoFiltrado)
     }
 
