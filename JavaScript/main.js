@@ -1,9 +1,9 @@
 //VARIABLES
 
-const productos = []
-const carrito = []
+const articulos = []
+let carrito = []
 
-// PRODUCTOS
+// ARTICULOS
 
 class producto {
     constructor(id, nombre, precio, img, desc = ' ') {
@@ -13,9 +13,9 @@ class producto {
         this.img = img
         this.desc = desc
     }
-    desplegarProductos() {
-        const card = `
-            <div class="card">
+    desplegarArticulos() {
+        const tarjeta = `
+            <div class="tarjeta">
                 <p>${this.nombre}</p>
                 <div>
                     <img class="imgProducto" src=${this.img} alt="foto del producto">
@@ -29,11 +29,11 @@ class producto {
             </div>
         `
         const container = document.getElementById('container')
-        container.innerHTML += card
+        container.innerHTML += tarjeta
     }
     agregarEvento(){
         const btnAgregar = document.getElementById(this.id)
-        const productoEncontrado = productos.find(product => product.id == this.id)
+        const productoEncontrado = articulos.find(product => product.id == this.id)
         btnAgregar.addEventListener('click', () => agregarAlCarrito(productoEncontrado))
 
     }
@@ -45,15 +45,15 @@ let taza1 = new producto('03', 'Taza a rayas', 200, './assets/taza03.jpg')
 let llavero1 = new producto('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
 
 
-productos.push(camiseta1, gorro1, taza1, llavero1)
+articulos.push(camiseta1, gorro1, taza1, llavero1)
 
-console.log(productos)
+console.log(articulos)
 
-productos.forEach(e => {
-    e.desplegarProductos()
+articulos.forEach(e => {
+    e.desplegarArticulos()
 })
 
-productos.forEach(e => {
+articulos.forEach(e => {
     e.agregarEvento()
 })
 
@@ -73,10 +73,14 @@ function agregarAlCarrito(producto){
         {...enCarrito, cantidad: enCarrito.cantidad + 1}
         ]
         
-        console.log(carritoFiltrado)
+        console.log(carrito)
     }
-
+contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
 }
+
+const contador = document.getElementById('cartCounter')
+contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
+
 //ORDEN DE COMPRA 
 
 // while (seguirComprando === true) {
