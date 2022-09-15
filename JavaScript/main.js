@@ -1,16 +1,11 @@
 //VARIABLES
 
-// let totalCompra = 0
-// let agregarAlCarrito = parseInt(prompt('Ingresa el produco que deseas comprar: \n1-Camiseta \n2-Gorro \n3-Taza \n4-Llavero'))
-// let seguirComprando = true
-
 const productos = []
-const carritoDeCompras = []
-
+const carrito = []
 
 // PRODUCTOS
 
-class Producto {
+class producto {
     constructor(id, nombre, precio, img, desc = ' ') {
         this.id = id
         this.nombre = nombre
@@ -38,16 +33,16 @@ class Producto {
     }
     agregarEvento() {
         const btnAgregar = document.getElementById(this.id)
-        console.log(btnAgregar)
-        btnAgregar.addEventListener('click', () => agregarAlCarrito())
+        const productoEncontrado = productos.find(product => product.id == this.id)
+        btnAgregar.addEventListener('click', () => agregarAlCarrito(productoEncontrado))
 
     }
 }
 
-let camiseta1 = new Producto('01', 'Camiseta estampada', 700, './assets/camiseta01.jpg')
-let gorro1 = new Producto('02', 'Gorro con onda', 300, './assets/gorro02.jpg')
-let taza1 = new Producto('03', 'Taza a rayas', 200, './assets/taza03.jpg')
-let llavero1 = new Producto('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
+let camiseta1 = new producto('01', 'Camiseta estampada', 700, './assets/camiseta01.jpg')
+let gorro1 = new producto('02', 'Gorro con onda', 300, './assets/gorro02.jpg')
+let taza1 = new producto('03', 'Taza a rayas', 200, './assets/taza03.jpg')
+let llavero1 = new producto('04', 'Llavero fantasma', 100, './assets/llavero04.jpg')
 
 
 productos.push(camiseta1, gorro1, taza1, llavero1)
@@ -62,8 +57,20 @@ productos.forEach(e => {
     e.agregarEvento()
 })
 
-function agregarAlCarrito(){
-    console.log(hola)
+function agregarAlCarrito(producto){
+    console.log(producto)
+
+    const enCarrito = carrito.find(prod => prod.id == producto.id)
+    
+
+    if(! enCarrito){
+        carrito.push({...producto, cantidad: 1})
+    } else {
+        console.log(carrito)
+        let carritoFiltrado = carrito.filter(prod => prod.id != producto.id)
+        console.log(carritoFiltrado)
+    }
+
 }
 //ORDEN DE COMPRA 
 
