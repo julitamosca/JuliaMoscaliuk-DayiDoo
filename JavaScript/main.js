@@ -2,6 +2,7 @@
 
 const articulos = []
 let carrito = []
+const contenedorCarrito = document.getElementById('carrito-contenedor')
 
 // ARTICULOS
 
@@ -24,7 +25,7 @@ class producto {
                     <p>${this.precio}</p>
                 </div>
                 <div class="btn-container">
-                    <button id=${this.id} class="btnAgregar">Agregar al carrito</button>
+                    <button id=${this.id} class="btnAgregar">¡¡Quiero uno!!</button>
                 </div>
             </div>
         `
@@ -80,6 +81,11 @@ contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
 
 const contador = document.getElementById('cartCounter')
 contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
+
+//CARRITO
+
+const actualizarCarrito
+
 
 //ORDEN DE COMPRA 
 
