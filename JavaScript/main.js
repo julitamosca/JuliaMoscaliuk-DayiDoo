@@ -16,7 +16,7 @@ class producto {
     desplegarArticulos() {
         const tarjeta = `
             <div class="tarjeta">
-                <p>${this.nombre}</p>
+                <p>$${this.nombre}</p>
                 <div>
                     <img class="imgProducto" src=${this.img} alt="foto del producto">
                 </div>
@@ -33,8 +33,8 @@ class producto {
     }
     agregarEvento(){
         const btnAgregar = document.getElementById(this.id)
-        const productoEncontrado = articulos.find(product => product.id == this.id)
-        btnAgregar.addEventListener('click', () => agregarAlCarrito(productoEncontrado))
+        const articuloEncontrado = articulos.find(product => product.id == this.id)
+        btnAgregar.addEventListener('click', () => agregarAlCarrito(articuloEncontrado))
 
     }
 }
