@@ -84,7 +84,7 @@ contador.innerHTML = carrito.reduce((acc, prod) => acc + prod.cantidad, 0)
 
 //CARRITO
 
-const actualizarCarrito
+//const actualizarCarrito
 
 
 //ORDEN DE COMPRA 
